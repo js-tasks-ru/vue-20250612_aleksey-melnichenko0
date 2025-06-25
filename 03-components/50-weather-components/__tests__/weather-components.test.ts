@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 import type { VueWrapper, DOMWrapper } from '@vue/test-utils'
 import { WeatherConditionIcons, getWeatherData } from '../weather.service.ts'
-import WeatherApp from '../WeatherApp.js'
+import WeatherApp from '../WeatherApp.ts'
 
 describe('components/weather-components', () => {
   const weatherData = getWeatherData()

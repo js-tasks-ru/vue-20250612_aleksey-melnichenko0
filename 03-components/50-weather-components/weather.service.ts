@@ -64,7 +64,7 @@ export const WeatherConditionIcons = {
   804: '☁️', // Clouds 85-100%
 } as const
 
-type WeatherData = {
+export type WeatherData = {
   /** Географическое название */
   geographic_name: string
   /** Текущая погода */
