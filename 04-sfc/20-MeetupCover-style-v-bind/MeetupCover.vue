@@ -11,7 +11,7 @@ const props = defineProps({
   },
 })
 
-const bgStyle = computed(() => (props.image ? { '--bg-url': `url('${props.image}')` } : undefined))
+const bgStyle = computed(() => (props.image ? `url("${props.image}")` : ''))
 </script>
 
 <template>
@@ -22,6 +22,7 @@ const bgStyle = computed(() => (props.image ? { '--bg-url': `url('${props.image}
 
 <style scoped>
 .meetup-cover {
+  --bg-url: v-bind('bgStyle');
   background-size: cover;
   background-position: center;
   /* Если изображение присутствует - берём его из CSS переменной, установленной на элемент в шаблоне */
