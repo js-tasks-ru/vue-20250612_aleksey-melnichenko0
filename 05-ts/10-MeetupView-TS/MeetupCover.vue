@@ -1,16 +1,10 @@
-<script setup>
+<script setup lang="ts">
+import type { MeetupDTO } from '@shgk/vue-course-ui'
 import { computed } from 'vue'
 
-const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
+type PropsType = Pick<MeetupDTO, 'title' | 'image'>
 
-  image: {
-    type: String,
-  },
-})
+const props = defineProps<PropsType>()
 
 const bgStyle = computed(() => (props.image ? { '--bg-url': `url('${props.image}')` } : undefined))
 </script>
