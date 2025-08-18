@@ -1,11 +1,13 @@
-<script setup lang="ts" generic="T extends '' | '1' | '2' | '3'">
-
-const props = defineProps<{
+<script setup lang="ts" generic="T extends string">
+type PropsType = {
   options: {
     value: T;
     text: string
   }[]
-}>()
+}
+
+const props = defineProps<PropsType>()
+
 const model = defineModel<T>({ required: true })
 </script>
 
