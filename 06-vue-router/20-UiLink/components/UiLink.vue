@@ -1,16 +1,15 @@
 <script setup lang="ts">
-// Does not work for me without importing RouterLink
-import { RouterLink } from 'vue-router';
+import { type RouteLocationRaw } from 'vue-router';
 
 defineProps<{
-  to?: string | { path?: string, name?: string; params?: Record<string, any>; query?: Record<string, any> };
+  to?: RouteLocationRaw;
   href?: string;
 }>();
 </script>
 
 <template>
   <component
-    :is="to ? RouterLink : 'a'"
+    :is="to ? 'RouterLink' : 'a'"
     class="link"
     v-bind="to ? { to } : { href }"
   >

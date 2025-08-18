@@ -38,7 +38,7 @@ defineSlots<{
       <slot name="default" />
     </div>
     <div v-if="hint" class="form-group__hint" :class="{ 'form-group__hint--invalid': invalid }">
-      <span v-if="showHint || invalid">{{ hint }}</span>
+      <template v-if="showHint || invalid">{{ hint }}</template>
     </div>
   </div>
 </template>
