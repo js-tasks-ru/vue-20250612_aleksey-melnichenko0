@@ -1,9 +1,9 @@
-<script setup>
-defineProps({
-  description: {
-    type: String,
-  },
-})
+<script setup lang="ts">
+import type { MeetupDTO } from '@shgk/vue-course-ui'
+
+type PropsType = Pick<MeetupDTO, 'description'>
+
+const { description } = defineProps<PropsType>()
 </script>
 
 <template>

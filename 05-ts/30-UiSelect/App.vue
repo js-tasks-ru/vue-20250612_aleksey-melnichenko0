@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { UiContainer } from '@shgk/vue-course-ui'
 import UiSelect from './UiSelect.vue'
 
-type SelectValue = '' | '1' | '2' | '3'
+type SelectValue = typeof options[number]['value']
 
 const options = [
   { value: '', text: 'Выберите значение…' } as const,

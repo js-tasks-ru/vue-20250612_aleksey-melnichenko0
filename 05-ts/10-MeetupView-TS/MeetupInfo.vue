@@ -1,23 +1,11 @@
-<script setup>
+<script setup lang="ts">
+import type { MeetupDTO } from '@shgk/vue-course-ui'
 import { computed } from 'vue'
 import { UiIcon } from '@shgk/vue-course-ui'
 
-const props = defineProps({
-  organizer: {
-    type: String,
-    required: true,
-  },
+type PropsType = Pick<MeetupDTO, 'organizer' | 'place' | 'date'>
 
-  place: {
-    type: String,
-    required: true,
-  },
-
-  date: {
-    type: Number,
-    required: true,
-  },
-})
+const props = defineProps<PropsType>()
 
 const isoDate = computed(() => new Date(props.date).toISOString().slice(0, 10))
 const localDate = computed(() =>

@@ -4,14 +4,27 @@ import { ref } from 'vue'
 import MeetupsAuthForm from '../components/MeetupsAuthForm.vue'
 import LayoutAuth from '../components/LayoutAuth.vue'
 import { login } from '../api.ts'
+import { useRouter, useRoute } from 'vue-router'
+import type { LocationQueryValue } from 'vue-router'
 
 const email = ref('demo@email')
 const password = ref('password')
 
+const router = useRouter()
+const route = useRoute()
+
 async function onSubmit() {
   try {
     await login(email.value, password.value)
-    // Авторизация прошла успешно
+    // We are not handling the case when from query parameter is an array for simplicity sake
+    // Idealy, we can implement some util function to handle this case
+    const to = route.query.from as LocationQueryValue
+    useRoute()
+    if (to) {
+      router.push({ path: to })
+    } else {
+      router.push({ path: '/' })
+    }
   } catch (error) {
     alert((error as Error).message)
   }
@@ -35,7 +48,7 @@ async function onSubmit() {
 
       <template #append>
         Нет аккаунта?
-        <a href="/register">Зарегистрируйтесь</a>
+        <RouterLink to="/register">Зарегистрируйтесь</RouterLink>
       </template>
     </MeetupsAuthForm>
   </LayoutAuth>
